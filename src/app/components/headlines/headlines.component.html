@@ -60,45 +60,5 @@
     <div class="pagination-next page-item" [class.disabled]="p.isLastPage()">
       <a class="page-link" (click)="p.next()"> &raquo; </a>
     </div>
-  </pagination-template>
-  <!--
-  <pagination-controls (pageChange)="pageChanged($event)"
-  previousLabel=""
-  nextLabel=""></pagination-controls>-->
-  <!--
-  <ul class="pagination justify-content-center">
-    <li class="page-item" [ngClass]="{ 'disabled': activeIndex === 1}">
-      <a *ngIf="activeIndex > 1; else disabledPrevious" class="page-link" [routerLink]="" aria-label="Previous" (click)="previousPage()">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <ng-template #disabledPrevious>
-        <span class="page-link">
-          <span aria-hidden="true">&laquo;</span>
-        </span>
-      </ng-template>
-    </li>
-    <li class="page-item" *ngFor="let i of newsCount" [ngClass]="{'active': (i+1) === activeIndex }">
-      <span *ngIf="(i+1) === activeIndex; else page" class="page-link">
-        {{(i+1)}}
-        <span class="sr-only">(current)</span>
-      </span>
-      <ng-template #page>
-        <a class="page-link" [routerLink]="" (click)="showNews(i+1)">{{(i+1)}}</a>
-      </ng-template>
-
-    </li>
-    <li class="page-item" [ngClass]="{ 'disabled': activeIndex === newsCount.length}">
-      <a *ngIf="activeIndex < newsCount.length; else disabledNext" class="page-link" [routerLink]="" aria-label="Next"
-        (click)="nextPage()">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-      <ng-template #disabledNext>
-        <span class="page-link disabled">
-          <span aria-hidden="true">&raquo;</span>
-        </span>
-      </ng-template>
-    </li>
-  </ul>-->
+  </pagination-template> 
 </ng-template>
