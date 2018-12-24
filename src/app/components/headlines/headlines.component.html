@@ -1,0 +1,104 @@
+<div *ngIf="isLoading; else content" class="loading justify-content-md-center">
+  <img src="assets/img/kStqI6W.gif">
+ <!-- <div class="d-flex justify-content-center">
+      <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>-->
+</div>
+<ng-template #content>
+  <div class="alert-danger alert-dismissible fade" [ngClass]="{ 
+  'alert': msg !== '',
+  'show': msg !== ''
+}" role="alert">
+    {{msg}}
+    <button type="button" class="close" (click)="dismissAlert()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Page Heading -->
+  <h1 class="my-4">Titulares
+    <small>
+      <span class="img-container">
+        <img class="img-language" (click)="changeLanguage('es')" title="Español" src="assets/img/flag-for-spain.png">
+      </span>
+      <span class="img-container">
+        <img class="img-language" (click)="changeLanguage('en')" title="Inglés" src="assets/img/flag-for-united-kingdom.png">
+      </span>
+    </small>
+  </h1> 
+  <div *ngFor="let article of articles | paginate: { itemsPerPage: pageSize, currentPage: activeIndex, totalItems: totalResults }">
+    <div class="row">
+      <div class="col-md-7">
+        <a [href]="article.url" target="_blank">
+          <img class="img-fluid rounded mb-3 mb-md-0" [src]="article.urlToImage" alt="">
+        </a>
+      </div>
+      <div class="col-md-5">
+        <h3>{{article.title}}</h3>
+        <h6 class="card-subtitle mb-2 text-muted">{{article.author}}</h6>
+        <p>{{article.content | slice:0:260 }}</p>
+        <a target="_blank" class="btn btn-primary" [href]="article.url">Ver más</a>
+      </div>
+    </div>
+    <!-- /.row -->
+    <hr>
+  </div>
+  <!-- Pagination -->
+  <pagination-template #p="paginationApi" class="pagination justify-content-center" (pageChange)="pageChanged($event)">
+    <div class="pagination-previous page-item" [class.disabled]="p.isFirstPage()">
+      <a class="page-link" (click)="p.previous()">&laquo;</a>
+    </div>
+    <div class="page-item" *ngFor="let page of p.pages" [class.active]="p.getCurrent() === page.value">
+      <a class="page-link" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+        <span>{{ page.label }}</span>
+      </a>
+      <div class="page-link" *ngIf="p.getCurrent() === page.value">
+        <span>{{ page.label }}</span>
+      </div>
+    </div>
+    <div class="pagination-next page-item" [class.disabled]="p.isLastPage()">
+      <a class="page-link" (click)="p.next()"> &raquo; </a>
+    </div>
+  </pagination-template>
+  <!--
+  <pagination-controls (pageChange)="pageChanged($event)"
+  previousLabel=""
+  nextLabel=""></pagination-controls>-->
+  <!--
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [ngClass]="{ 'disabled': activeIndex === 1}">
+      <a *ngIf="activeIndex > 1; else disabledPrevious" class="page-link" [routerLink]="" aria-label="Previous" (click)="previousPage()">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <ng-template #disabledPrevious>
+        <span class="page-link">
+          <span aria-hidden="true">&laquo;</span>
+        </span>
+      </ng-template>
+    </li>
+    <li class="page-item" *ngFor="let i of newsCount" [ngClass]="{'active': (i+1) === activeIndex }">
+      <span *ngIf="(i+1) === activeIndex; else page" class="page-link">
+        {{(i+1)}}
+        <span class="sr-only">(current)</span>
+      </span>
+      <ng-template #page>
+        <a class="page-link" [routerLink]="" (click)="showNews(i+1)">{{(i+1)}}</a>
+      </ng-template>
+
+    </li>
+    <li class="page-item" [ngClass]="{ 'disabled': activeIndex === newsCount.length}">
+      <a *ngIf="activeIndex < newsCount.length; else disabledNext" class="page-link" [routerLink]="" aria-label="Next"
+        (click)="nextPage()">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+      <ng-template #disabledNext>
+        <span class="page-link disabled">
+          <span aria-hidden="true">&raquo;</span>
+        </span>
+      </ng-template>
+    </li>
+  </ul>-->
+</ng-template>

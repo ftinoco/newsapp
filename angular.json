@@ -43,7 +43,8 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "baseHref": "/newsapp/"
             }
           }
         },
@@ -123,5 +124,15 @@
       }
     }
   },
-  "defaultProject": "newsapp"
+  "defaultProject": "newsapp",
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "spec": false
+      },
+      "service": {
+        "spec": false
+      }
+    }
+  }
 }
