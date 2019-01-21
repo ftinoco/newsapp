@@ -1,6 +1,6 @@
 # Newsapp
 
-Proyecto de prueba para poder desplegarlo en AWS S3, el cual se puede acceder desde: http://test.angular.newsapp.s3-website.us-east-2.amazonaws.com/newsapp/
+Proyecto de prueba para poder desplegarlo en AWS S3, el cual se puede acceder desde: http://noticiashexizas.tk.s3-website.us-east-2.amazonaws.com/newsapp/
 
 Basicamente lista noticias en español e inglés con el link a la página de noticias.
 
